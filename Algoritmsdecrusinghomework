@@ -1,0 +1,91 @@
+void selectionsortingrecrusing() {
+	int arr[5]{};
+	int size = 5;
+	int min = arr[0];
+	int minindex;
+	
+	for (int i = 0; i < size-1; ++i) {
+		min = arr[i];
+		for (int j = i; j < size; ++j) {
+			if (min > arr[j]) {
+				min = arr[j];
+				minindex = j;
+			}
+		}
+		swap(arr[i], arr[minindex]);
+	}
+	
+}
+
+
+void selectionsortingrecrusing(int *arr,int a,int b) {
+	if (a == b-1) {
+		return; 
+	}
+	int min = arr[a];
+	int minindex=a;
+	for (int j = a+1; j <b; ++j) {
+		if (min > arr[j]) {
+			min = arr[j];
+			minindex = j;
+		}
+	}
+	swap(arr[a], arr[minindex]);
+	selectionsortingrecrusing(arr, a + 1, b);
+}
+
+void selectionsortingdecrusing(int* arr, int a, int b) {
+if (a == b - 1) {
+	return;
+}
+int max = arr[a];
+int maxindex = a;
+for (int j = a + 1; j < b; ++j) {
+	if (max< arr[j]) {
+		max = arr[j];
+		maxindex = j;
+	}
+}
+swap(arr[a], arr[maxindex]);
+selectionsortingrecrusing(arr, a + 1, b);
+}
+
+void bubbleSortrecrusing(int* arr, int low, int high)
+{
+	int i, j;
+	for (i = low; i < high - 1; i++) {
+		for (j = low; j < high - i - 1; j++) {
+			if (arr[j] > arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+	}
+}
+void bubbleSortdecrusing(int* arr, int low, int high)
+{
+	int i, j;
+	for (i = low; i < high - 1; i++) {
+		for (j = low; j < high - i - 1; j++) {
+			if (arr[j] < arr[j + 1])
+				swap(arr[j], arr[j + 1]);
+		}
+	}
+}
+
+
+void insertsortdecrusing(int* arr, int low, int high) {
+	int key ;
+	int j;
+	for (int i = low ; i <high; ++i) {
+		j = i-1;
+		key = arr[i];
+		
+		while (j>=0 && arr[j]<key) {
+			
+			arr[j + 1] = arr[j];
+			--j;
+		}
+	
+		
+		arr[j+1] = key;
+	}
+}
