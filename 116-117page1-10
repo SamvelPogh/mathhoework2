@@ -1,0 +1,161 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void question1(string str) {
+	int i = 0;
+	int j = str.size()-1;
+	string str1 = "", str2 = "";
+	bool t1=true, t2=true;
+	while (true) {
+
+		if (t1!=true && t2!=true)break;
+		if (str[i] != ' ')
+		{
+			str1 += str[i];
+			str.erase(i,1);
+			++i;
+		}
+		else { t1 = false; }
+		if (str[j] != ' ') {
+			str2 += str[j];
+			str.erase(j,1);
+			--j;
+		}
+		else { t2 = false; }
+	}
+
+	str = str2 + ' ' + str + ' ' + str1;
+	cout << str;
+}
+
+
+void question2(string st1, string st2) {
+	string st = "";
+	for (int i = 0; i < st1.length(); ++i) {
+		for (int j = 0; j < st2.length(); ++j) {
+			if (st1[i] == st2[j]) {
+				st += st1[i];
+				break;
+			}
+		}
+	}
+
+	cout << st;
+}
+
+void question3(string st1, string st2) {
+	string st = "";
+	bool t = true;
+	for (int i = 0; i < st1.length(); ++i) {
+		for (int j = 0; j < st2.length(); ++j) {
+			if (st1[i] == st2[j]) {
+				t = false;
+				break;
+			}
+		}
+		if (t) {
+			st += st1[i];
+			t = true;
+		}
+		
+	}
+	cout << st;
+}
+void question4(string st) {
+int count = 1;
+string s = "";
+	for (int i = 0; i < st.length(); ++i) {
+		if (st[i] == '*') {
+			s += to_string(count);
+			++count;
+		}
+		else s += st[i];
+
+	}
+	cout << st;
+}
+void question5(string s) {
+	for (int i = 0; i < s.length(); ++i) {
+		if (s[i] == '!') s[i] = i;
+	}
+	cout << s;
+}
+
+void question6(string s) {
+	for (int i = 0; i < s.length(); ++i) {
+		s[i] = ++s[i];
+	}
+	cout << s;
+}
+
+void question7(string s) {
+
+	bool t = true;
+	int count = 0;
+	for (int i = 0; i < s.length(); ++i) {
+		for (int j = 1; j < s.length(); ++j) {
+			
+			if (s[i] == s[j] && i!=j) {
+				t = false;
+				break;
+			}
+		}
+		if (t == true) {
+			++count;
+		}
+		else {
+			t = true;
+		}
+	}
+	cout << count;
+}
+
+void question8(string s) {
+	int start = 0;
+	for (int i = 0; i < s.length(); ++i) {
+		if (s[i] == ' ') {
+			int end = i;
+			reverse(s.begin() + start, s.begin() + end);
+			start = i + 1;
+		}
+
+	}
+
+
+	cout << s;
+}
+
+void question9(string s) {
+	int count = 0;
+	for (int i = 0; i < s.length(); ++i) {
+		if (s[i] >= 'a' && s[i] < 'z') {
+			++count;
+		}
+	}
+}
+
+void question10(string s) {
+	string st = "";
+	int countprob = 0;
+	for (int i = 0; i < s.length(); ++i)
+	{
+		if (s[i] == ' ') {
+			++countprob;
+		}
+	}
+	const int count = countprob+1;
+	string* array = new string[count];
+	countprob = 0;
+	for (int i = 0; i < s.length(); ++i) {
+		if (s[i] == ' ') {
+			array[countprob] = st;
+			st = "";
+			++countprob;
+		}
+		else {
+			st += s[i];
+		}
+	}
+
+
+}
